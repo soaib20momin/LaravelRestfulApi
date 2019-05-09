@@ -11,5 +11,10 @@ $router->version('v1', function (Router $router){
             $router->get('ping', 'ServerController@ping');
             $router->get('version', 'ServerController@version');
         });
+
+        $router->group(['prefix' => 'weather'], function (Router $router) {
+            $router->get('city/{city}/current', 'QueryController@current');
+            $router->get('city/{city}/all', 'QueryController@all');
+        });
     });
 });
